@@ -1,0 +1,63 @@
+body {
+    background: url("/assets/images/architecture-1778713_1920.jpg");
+    background-color: #333a40;
+    background-size: cover;
+    background-repeat: space;
+    background-attachment: fixed;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+    letter-spacing: .2em;
+   
+}
+
+h5 {
+    font-size: 20px;
+    letter-spacing: .1em;
+}
+
+.jumbotron {
+    margin-top: 15px;
+    color: yellow;
+    background: #333a40;
+    letter-spacing: .3em;
+    border-radius: 5px;
+    outline: 1px solid #fff;
+    outline-offset: -20px;
+}
+.card-body a {
+    word-break: break-all;
+}
+
+.table {
+    font-size: 20px;
+    letter-spacing: .2em;
+    color: yellow;
+}
+.form-control {
+    font-size: 25px;
+}
+
+tr {
+    text-align: center;
+}
+.btn:hover {
+    background: yellow;
+    color: #333a40;
+}
+
+#add-train-button {
+    font-size: 30px;
+    padding: 10px;
+}
+
+
+#footer-column {
+    /* background: #333a40; */
+    color: #fff;
+}
+
+/* The Analog Clock */
+
+
+  
+  
