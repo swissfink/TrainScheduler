@@ -138,7 +138,6 @@ $("#add-train-button").on("click", function (event) {
     console.log("MINUTES AWAY: " + tMinutesTillTrain);
     
     // Determine what time it will be when the next train arrives
-    // var nextArrival = moment([2007, 0, 29]).fromNow();
     var nextArrival = moment().add(tMinutesTillTrain, "minutes");
     console.log("NEXT ARRIVAL TIME: " + moment(nextArrival).format("HH:mm"));
     //=================================
