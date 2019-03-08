@@ -10,10 +10,12 @@ body {
    
 }
 
+
 h5 {
     font-size: 20px;
     letter-spacing: .1em;
 }
+
 
 .jumbotron {
     margin-top: 15px;
@@ -24,40 +26,57 @@ h5 {
     outline: 1px solid #fff;
     outline-offset: -20px;
 }
+
+
 .card-body a {
     word-break: break-all;
 }
+
 
 .table {
     font-size: 20px;
     letter-spacing: .2em;
     color: yellow;
 }
+
+
 .form-control {
     font-size: 25px;
 }
 
+
 tr {
     text-align: center;
 }
+
+
+th {
+    color: #fff;
+}
+
+
+.btn {
+    width: 95px;
+    letter-spacing: .2em;
+}
+
+
 .btn:hover {
     background: yellow;
     color: #333a40;
 }
 
-#add-train-button {
-    font-size: 30px;
-    padding: 10px;
-}
 
+#add-train-button {
+    font-size: 25px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 175px;
+}
+#note {
+    font-size: 22px ! important;
+}
 
 #footer-column {
-    /* background: #333a40; */
     color: #fff;
 }
-
-/* The Analog Clock */
-
-
-  
-  
