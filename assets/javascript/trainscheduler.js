@@ -92,54 +92,48 @@ $("#add-train-button").on("click", function (event) {
 
     // Console Log the Train Info
     //=================================
-    console.log("DATABASE ROW ID #: " + rowId);
+    // console.log("DATABASE ROW ID #: " + rowId);
     console.log("NAME OF TRAIN: " + trainName);
     console.log("DESTINATION: " + trainDest);
-    console.log("TRAIN'S START TIME: " + firstTrain);
+    console.log("TRAIN'S START TIME: " + moment.unix(firstTrain).format("HH:mm"));
     console.log("TRAIN FREQUENCY: " + trainFreq);
-    console.log("/------------------------------------------/");
+    // console.log("/------------------------------------------/");
     //=================================
 
 
-    // Prettify the train Start Time
+    // Calculating the "Minutes Away"
     //=================================
-    var firstTrainPretty = moment.unix(firstTrain).format("HH:mm");
-    console.log("TRAIN START TIME PRETTY: " + firstTrainPretty);
-    //=================================
+    // Assumptions
+    var tFrequency = trainFreq;
+    
+    // Start Time
+    var firstTime = firstTrain;
 
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment.unix(firstTime, "HH:mm").subtract(1, "year");
+    console.log("TIME CONVERTED:" + moment(firstTimeConverted).format("HH:mm"));
+    
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
-    // Calculating the "minutes away"
-    //=================================
-
-    // Push back firstTime 1 year to make sure it comes before current time
-    var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
-    console.log("TRAIN'S START TIME CONVERTED: " + firstTrainConverted);
-
-    // Prettify the Converted Train Start Time
-    //=================================
-    var firstTrainConvertedPretty = moment.unix(firstTrainConverted).format("HH:mm");
-    console.log("TRAIN START TIME CONVERTED PRETTY: " + firstTrainConvertedPretty);
-    //=================================
-
-    // Get the current time
-    var currentTime = moment().format("HH:mm");
-    console.log("CURRENT TIME: " + (currentTime));
-
-    // Get the difference between the times
-    var diffTime = moment().diff(moment(firstTrainConverted));
-    console.log("DIFFERENCE IN TIME: " + moment(diffTime).format("mm"));
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + moment(diffTime).format("m"));
 
     // Time apart (remainder)
-    var tRemainder = diffTime % trainFreq;
+    var tRemainder = diffTime % tFrequency;
     console.log("REMAINDER: " + tRemainder);
-    
-    // Caluculate the minutes remaining until the next train
-    var tMinutesTillTrain = trainFreq - tRemainder;
-    console.log("MINUTES AWAY: " + tMinutesTillTrain);
-    
-    // Determine what time it will be when the next train arrives
-    var nextArrival = moment().add(tMinutesTillTrain, "minutes");
-    console.log("NEXT ARRIVAL TIME: " + moment(nextArrival).format("HH:mm"));
+
+    // Minutes Until Next Train
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL NEXT TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+
+    console.log("/------------------------------------------/");
     //=================================
 
 
@@ -148,13 +142,12 @@ $("#add-train-button").on("click", function (event) {
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
       $("<td>").text(trainDest),
-      $("<td>").text(firstTrainPretty),
+      $("<td>").text(moment.unix(firstTrain).format("HH:mm")),
       $("<td>").text(trainFreq),
-      $("<td>").text(moment(nextArrival, "HH:mm").format("HH:mm")),
+      $("<td>").text(moment(nextTrain).format("HH:mm")),
       $("<td>").text(tMinutesTillTrain),
       $("<td>").append("<button type='button' data-name='"+rowId+"' class='remove btn btn-secondary'>Remove</button>"),
     );
-    console.log("/------------------------------------------/");
     //=================================
         
 
