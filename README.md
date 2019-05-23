@@ -2,6 +2,10 @@
 
 ## A train schedule application that incorporates Firebase to host train arrival and departure data. 
 
+
+![Image of CALLO App Landing Page](https://github.com/swissfink/TrainScheduler/blob/master/assets/images/train-featured-image.png)
+
+
 ### This app also retrieves and manipulate this information with Moment.js. 
 
 ### This website provides up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
